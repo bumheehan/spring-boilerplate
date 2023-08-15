@@ -6,6 +6,7 @@ spring:
       - "properties/application-logging.yml"
       - "properties/application-profile.yml"
       - "properties/application-profile2.yml"
+      - "properties/application-cache.yml"
   profiles:
     group:
       dev: "logging-dev"

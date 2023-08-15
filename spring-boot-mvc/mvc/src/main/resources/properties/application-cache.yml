@@ -1,0 +1,6 @@
+spring:
+  cache:
+    cache-names:
+      - bumbing
+    caffeine:
+      spec: "maximumSize=500,expireAfterAccess=1d"
