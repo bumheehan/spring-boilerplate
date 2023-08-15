@@ -1,0 +1,61 @@
+logging:
+  config: classpath:logging/logback-spring.xml
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+logging:
+  config:
+    slack:
+      hook-uri: ""
+    file:
+      max-history: 30
+      max-file-size: 1GB
+      total-size-cap: 10GB
+      path: "/app/log"
+    level:
+      xyz.bumbing: INFO
+
+---
+#DEV
+spring:
+  config:
+    activate:
+      on-profile: dev
+logging:
+  level:
+    xyz.bumbing: DEBUG
+  config:
+    file:
+      max-history: 30
+      max-file-size: 1GB
+      total-size-cap: 10GB
+      path: "/app/log"
+
+---
+#Local
+spring:
+  config:
+    activate:
+      on-profile: local
+logging:
+  level:
+    org.springframework.transaction.interceptor: TRACE
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    xyz.bumbing: DEBUG
+    org.hibernate.stat: DEBUG
+    org.hibernate.CACHE: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+logging:
+  level:
+    org.springframework.transaction.interceptor: TRACE
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    xyz.bumbing: DEBUG
+    org.hibernate.stat: DEBUG
+    org.hibernate.CACHE: DEBUG

@@ -1,0 +1,20 @@
+<included>
+    <springProperty name="FILE_NAME" source="spring.application.name"/>
+    <springProperty name="FILE_PATH" source="logging.config.file.path"/>
+    <springProperty name="FILE_MAX_HISTORY" source="logging.config.file.max-history"/>
+    <springProperty name="FILE_MAX_SIZE" source="logging.config.file.max-file-size"/>
+    <springProperty name="FILE_TOTAL_SIZE" source="logging.config.file.total-size-cap"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${FILE_PATH}/${FILE_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_PATH}/${FILE_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>${FILE_MAX_SIZE}</maxFileSize>
+            <maxHistory>${FILE_MAX_HISTORY}</maxHistory>
+            <totalSizeCap>${FILE_TOTAL_SIZE}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{Daemon} - %msg%n</pattern>
+        </encoder>
+    </appender>
+</included>

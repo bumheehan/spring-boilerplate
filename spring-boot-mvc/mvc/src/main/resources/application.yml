@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: mvc-application
+  config:
+    import:
+      - "properties/application-logging.yml"
+      - "properties/application-profile.yml"
+      - "properties/application-profile2.yml"
+  profiles:
+    group:
+      dev: "logging-dev"
+      local: "logging-local"
+      prod: "logging-prod"
+    active: ${SPRING_PROFILES_ACTIVE:local}

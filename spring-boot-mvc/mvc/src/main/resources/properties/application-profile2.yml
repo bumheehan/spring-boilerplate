@@ -1,0 +1,33 @@
+profile2:
+  value: default2
+  default-value: default2
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+profile2:
+  value: prod2
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+profile2:
+  value: dev2
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+profile2:
+  value: local2
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+profile2:
+  value: test2
