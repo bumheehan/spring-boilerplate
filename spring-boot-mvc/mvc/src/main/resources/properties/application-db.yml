@@ -1,0 +1,37 @@
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+---
+#DEV
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+#Local
+spring:
+  config:
+    activate:
+      on-profile: local
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+  datasource:
+    url: jdbc:h2:mem:~/test
+    username: sa
+    password:
+
+
+# Register P6LogFactory to log JDBC events
+#decorator.datasource.p6spy.enable-logging: true
+logging:
+  level:
+    org.springframework.transaction.interceptor: TRACE
